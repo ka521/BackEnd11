@@ -1,18 +1,12 @@
 package doanthuctap.service.ServiceImpl;
 
-import doanthuctap.repository.AdvanceRepository;
-import doanthuctap.repository.EmployeeRepository;
-import doanthuctap.repository.TeamRepository;
-import doanthuctap.repository.WorkingRepository;
+import doanthuctap.entity.*;
+import doanthuctap.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import doanthuctap.dto.EmployeeDTO;
-import doanthuctap.entity.AdvanceEntity;
-import doanthuctap.entity.EmployeeEntity;
-import doanthuctap.entity.TeamEntity;
-import doanthuctap.entity.WorkingEntity;
 
 import doanthuctap.mapper.EmployeeMapper;
 
@@ -37,6 +31,12 @@ public class EmployeeImpl implements EmployeeService {
 
     @Autowired
     private AdvanceRepository advanceRepository;
+
+    @Autowired
+    private WorkingRepository1 workingRepository1;
+
+    @Autowired
+    private AdvancesRepository1 advanceRepository1;
 
     @Override
     public Set<EmployeeDTO> listEmployee() {
@@ -95,16 +95,16 @@ public class EmployeeImpl implements EmployeeService {
     public void deleteEmployee(Integer id) {
         EmployeeEntity entity = employeeRep.findById(id).orElseThrow(() -> new IllegalArgumentException("Employee_id: " + id + " is not found!"));
 
-        Iterable<WorkingEntity> workingEntitySet = workingRepository.findAllByEmployeeNo(id);
-        Iterable<AdvanceEntity> advanceEntitySet = advanceRepository.findAllByEmployeeNo(id);
+        List<Working> workingEntitySet = workingRepository1.findAllByEmployeeId(id);
+        List<Advances> advanceEntitySet = advanceRepository1.findAllByEmployeeId(id);
         if (workingEntitySet != null && advanceEntitySet != null) {
             workingEntitySet.forEach(workingEntity -> {
 
-                workingRepository.delete(workingEntity);
+                workingRepository1.delete(workingEntity);
             });
             advanceEntitySet.forEach(advanceEntity -> {
 
-                advanceRepository.delete(advanceEntity);
+                advanceRepository1.delete(advanceEntity);
             });
 
             employeeRep.delete(entity);
@@ -142,7 +142,7 @@ public class EmployeeImpl implements EmployeeService {
         entity.setTeam(teamEntity);
         entity.setAddress(employeeDTO.getAddress());
         entity.setMoneyPerHour(employeeDTO.getMoneyPerHour());
-
+        entity.setSex(employeeDTO.getSex());
 
 
 

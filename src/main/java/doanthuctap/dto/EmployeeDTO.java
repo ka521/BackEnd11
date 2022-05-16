@@ -32,5 +32,6 @@ public class EmployeeDTO {
     private Date startDay;
 
     private int teamID;
+    private  String sex;
 
 }

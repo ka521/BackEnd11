@@ -1,7 +1,9 @@
 package doanthuctap.service.ServiceImpl;
 
+import doanthuctap.entity.Working;
 import doanthuctap.repository.EmployeeRepository;
 import doanthuctap.repository.WorkingRepository;
+import doanthuctap.repository.WorkingRepository1;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,34 +24,19 @@ public class WorkingImpl implements WorkingService {
     @Autowired
     private WorkingRepository workingRepository;
     @Autowired
+    private WorkingRepository1 workingRepository1;
+    @Autowired
     private EmployeeRepository employeeRepository;
 
 
-    @Override
-    public Set<WorkingDTO> listWorking(Integer id) {
-        Set<WorkingDTO> workingDTOSet = new HashSet<>();
-        workingRepository.findAllByEmployeeNo(id).forEach(workingEntity -> {
-            workingDTOSet.add(workingMapper.toDTO(workingEntity));
-        });
-        return workingDTOSet;
-    }
 
-    @SneakyThrows
-    @Override
-    public WorkingDTO addWorking(WorkingDTO workingDTO) {
-        if (workingRepository.existsByEmployeeNoAndDate(workingDTO.getEmployee_id(), workingDTO.getDate()))
-            throw new Exception("Working Date is existing!");
 
-        EmployeeEntity employeeEntity = employeeRepository.findById(workingDTO.getEmployee_id()).orElseThrow(() -> new IllegalArgumentException("Employee is not found!"));
-        WorkingEntity entity = workingMapper.toEntity(workingDTO, employeeEntity);
-        return workingMapper.toDTO(workingRepository.save(entity));
-    }
 
     @Override
     public void deleteWorking(Integer id) {
-        WorkingEntity entity = workingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Working is not found!"));
+        Working entity1 = workingRepository1.findById(id).orElseThrow(() -> new IllegalArgumentException("Working is not found!"));
 
-        workingRepository.delete(entity);
+        workingRepository1.delete(entity1);
 
     }
 

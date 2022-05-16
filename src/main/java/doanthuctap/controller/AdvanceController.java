@@ -1,5 +1,8 @@
 package doanthuctap.controller;
 
+import doanthuctap.entity.Advances;
+import doanthuctap.exception.ResourceNotFoundException;
+import doanthuctap.repository.AdvancesRepository1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,46 +11,42 @@ import doanthuctap.dto.AdvanceDTO;
 import doanthuctap.service.AdvanceService;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/api/advance")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/api/v4")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AdvanceController {
+
     @Autowired
-    private AdvanceService advanceService;
+    private AdvancesRepository1 advancesRepository;
 
-    @GetMapping("/get-all/{employee_id}")
-    public ResponseEntity<?> listAdvance(@PathVariable Integer employee_id) {
-        try {
-            return ResponseEntity.ok(advanceService.listAdvance(employee_id));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
+    // get all employees
 
-        }
+
+    @GetMapping("/advances/{employeeId}" )
+    public List<Advances> getAllWorkingById(@PathVariable int employeeId){
+        return advancesRepository.findAllByEmployeeId(employeeId);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<?> addAdvance(@RequestBody @Valid AdvanceDTO advanceDTO) {
-        try {
+    // create employee rest api
+    @PostMapping("/advances")
+    public Advances createAdvances(@RequestBody Advances advances) {
 
-            return ResponseEntity.ok(advanceService.addAdvance(advanceDTO));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
-
-        }
-
+        return advancesRepository.save(advances);
     }
 
-    @DeleteMapping("/delete/{advance_id}")
-    public ResponseEntity<?> deleteAdvance(@PathVariable Integer advance_id) {
-        try {
-            advanceService.deleteAdvance(advance_id);
-            return ResponseEntity.ok().body("Delete Advance is successful!");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
-        }
+    @DeleteMapping("/advances/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteAdvances(@PathVariable int id){
+        Advances advances = advancesRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("advances not exist with id :" + id));
 
-
+        advancesRepository.delete(advances);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 
 }

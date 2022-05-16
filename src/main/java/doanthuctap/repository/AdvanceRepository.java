@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface AdvanceRepository extends CrudRepository<AdvanceEntity, Integer> {
-    Iterable<AdvanceEntity> findAllByEmployeeNo(Integer employee_id);
+
 
     @Query(value = "select a.* from advance a where employee_id=:id and a.date between :startDate and :endDate", nativeQuery = true)
     List<AdvanceEntity> findAllByEmployeeNoAndMonth(@Param("id") Integer id, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);

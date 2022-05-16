@@ -23,29 +23,7 @@ public class AdvanceImpl implements AdvanceService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Override
-    public Set<AdvanceDTO> listAdvance(Integer id) {
-        Set<AdvanceDTO> advanceDTOSet = new HashSet<>();
-        advanceRepository.findAllByEmployeeNo(id).forEach(advanceEntity -> {
-            advanceDTOSet.add(advanceMapper.toDTO(advanceEntity));
-        });
-        return advanceDTOSet;
-    }
 
-    @Override
-    public AdvanceDTO addAdvance(AdvanceDTO advanceDTO) {
-        EmployeeEntity employeeEntity = employeeRepository.findById(advanceDTO.getEmployee_id()).orElseThrow(() -> new IllegalArgumentException("Employee is not found!"));
-        AdvanceEntity entity = advanceMapper.toEntity(advanceDTO, employeeEntity);
-        return advanceMapper.toDTO(advanceRepository.save(entity));
-    }
-
-    @Override
-    public void deleteAdvance(Integer id) {
-        AdvanceEntity entity = advanceRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Advance is not found!"));
-
-        advanceRepository.delete(entity);
-
-    }
 
 
 }

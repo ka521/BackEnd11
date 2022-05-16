@@ -18,7 +18,7 @@ public class WorkingMapper {
         workingDTO.setId(entity.getId());
         workingDTO.setDate(entity.getDate());
         workingDTO.setHour(entity.getHour());
-        workingDTO.setEmployee_id(entity.getEmployee().getNo());
+//        workingDTO.setEmployee_id(entity.getEmployee().getNo());
         return workingDTO;
     }
 
@@ -27,7 +27,7 @@ public class WorkingMapper {
         workingEntity.setId(dto.getId());
         workingEntity.setDate(dto.getDate());
         workingEntity.setHour(dto.getHour());
-        workingEntity.setEmployee(employeeEntity);
+//        workingEntity.setEmployee(employeeEntity);
         return workingEntity;
     }
 }

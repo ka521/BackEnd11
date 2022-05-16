@@ -31,6 +31,11 @@ public class EmployeeEntity {
     @Temporal(TemporalType.DATE)
     private Date startDay;
 
+
+
+    @Column(name = "sex")
+    private String Sex;
+
     @Lob
     private byte[] image;
     private String contentType;
