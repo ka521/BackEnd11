@@ -8,8 +8,5 @@ import doanthuctap.entity.TeamEntity;
 import java.util.Set;
 
 public interface TeamRepository extends CrudRepository<TeamEntity, Integer> {
-    @Query(value = "Select * from Team team where team.name like %:name%", nativeQuery = true)
-    Set<TeamEntity> findByTeamName(@Param("name") String name);
 
-    TeamEntity findByName(String team);
 }
