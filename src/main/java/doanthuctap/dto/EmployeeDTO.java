@@ -28,7 +28,7 @@ public class EmployeeDTO {
     @Pattern(regexp = "\\d{10}", message = "Phone number is invalid!")
     private String phone;
 
-    @JsonFormat(pattern = "dd-MM-yyyy")
+//    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date startDay;
 
     private int teamID;
