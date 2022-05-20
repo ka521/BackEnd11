@@ -57,11 +57,7 @@ public class EmployeeImpl implements EmployeeService {
 
     }
 
-    @Override
-    public Page<EmployeeDTO> getPage(Integer pageIndex) {
-        Page<EmployeeEntity> page = employeeRep.findAllWithPageIndex(PageRequest.of(pageIndex, 5));
-        return page.map(entity -> mapper.toDTO(entity));
-    }
+
 
     @Override
     public EmployeeDTO findEmployee(Integer id) {
@@ -70,15 +66,7 @@ public class EmployeeImpl implements EmployeeService {
 
     }
 
-    @Override
-    public Set<EmployeeDTO> findByName(String name) {
-        Set<EmployeeDTO> employeeDTOSet = new HashSet<>();
-        Set<EmployeeEntity> employeeEntitySet = employeeRep.findByName(name);
-        employeeEntitySet.forEach(employeeEntity -> {
-            employeeDTOSet.add(mapper.toDTO(employeeEntity));
-        });
-        return employeeDTOSet;
-    }
+
 
     @Override
     public EmployeeDTO newEmployee(EmployeeDTO employeeDTO) {

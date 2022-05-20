@@ -28,14 +28,7 @@ public class TeamImpl implements TeamService {
         return dtoSet;
     }
 
-    @Override
-    public Set<TeamDTO> findTeamByName(String name) {
-        Set<TeamDTO> teamDTOSet = new HashSet<>();
-        teamRepository.findByTeamName(name).forEach(teamEntity -> {
-            teamDTOSet.add(mapper.toDTO(teamEntity));
-        });
-        return teamDTOSet;
-    }
+
 
     @Override
     public TeamDTO addTeam(TeamDTO teamDTO) {
@@ -43,15 +36,7 @@ public class TeamImpl implements TeamService {
         return mapper.toDTO(teamEntity);
     }
 
-    @Override
-    public TeamDTO updateTeam(Integer id, TeamDTO teamDTO) {
 
-        TeamEntity entity = teamRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Team is not found!"));
-        entity.setName(teamDTO.getName());
-        return mapper.toDTO(teamRepository.save(entity));
-
-
-    }
 
     @Override
     public void delete(Integer id) {

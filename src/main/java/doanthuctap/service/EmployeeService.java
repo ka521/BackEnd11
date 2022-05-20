@@ -17,12 +17,11 @@ public interface EmployeeService {
 
     String deleteAll(List<Integer> ids);
 
-    Set<EmployeeDTO> findByName(String name);
+
 
     EmployeeDTO updateEmployee(Integer id, EmployeeDTO employeeDTO);
 
     Set<EmployeeDTO> listEmployeeByTeam(Integer teamID);
 
 
-    Page<EmployeeDTO> getPage(Integer pageIndex);
 }
