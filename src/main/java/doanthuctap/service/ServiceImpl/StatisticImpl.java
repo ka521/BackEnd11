@@ -46,12 +46,4 @@ public class StatisticImpl implements StatisticService {
         return statisticResponse;
     }
 
-    private LocalDate firstDayOfPreviousMonth(LocalDate date) {
-        return date.minusMonths(1).withDayOfMonth(1);
-    }
-
-
-    private LocalDate lastDayOfPreviousMonth(LocalDate date) {
-        return date.withDayOfMonth(1).minusDays(1);
-    }
 }
