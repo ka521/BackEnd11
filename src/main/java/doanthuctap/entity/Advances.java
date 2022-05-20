@@ -19,7 +19,7 @@ public class Advances {
     private Date Start;
 
     @Column(name = "money")
-    private String Money;
+    private int Money;
 
 
     @Column(name = "employeeId")
@@ -37,7 +37,7 @@ public class Advances {
 
     }
 
-    public Advances(Date start, String money) {
+    public Advances(Date start, int money) {
         super();
         Start = start;
         Money = money;
@@ -51,11 +51,11 @@ public class Advances {
         Start = start;
     }
 
-    public String getMoney() {
+    public int getMoney() {
         return Money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(int money) {
         Money = money;
     }
 

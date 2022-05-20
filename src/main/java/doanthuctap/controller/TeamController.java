@@ -27,17 +27,7 @@ public class TeamController {
 
     }
 
-    @GetMapping("/find-by-name")
-    public ResponseEntity<?> findTeamByName(@RequestParam String name) {
 
-        try {
-            return ResponseEntity.ok(teamService.findTeamByName(name));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
-        }
-
-
-    }
 
     @PostMapping("/create")
     public ResponseEntity<?> addTeam(@RequestBody @Valid TeamDTO teamDTO) {
@@ -50,26 +40,7 @@ public class TeamController {
 
     }
 
-    @PostMapping("/create-all")
-    public ResponseEntity<?> createAll(@RequestBody @Valid List<TeamDTO> list) {
-        try {
-            list.forEach(teamDTO -> teamService.addTeam(teamDTO));
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
 
-        }
-    }
-
-    @PutMapping("/update-team/{id}")
-    public ResponseEntity<?> updateTeam(@PathVariable Integer id, @RequestBody @Valid TeamDTO teamDTO) {
-        try {
-            return ResponseEntity.ok(teamService.updateTeam(id, teamDTO));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
-
-        }
-    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteTeam(@PathVariable Integer id) {

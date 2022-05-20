@@ -26,11 +26,7 @@ public class EmployeeImpl implements EmployeeService {
     private TeamRepository teamRep;
 
 
-    @Autowired
-    private WorkingRepository workingRepository;
 
-    @Autowired
-    private AdvanceRepository advanceRepository;
 
     @Autowired
     private WorkingRepository1 workingRepository1;

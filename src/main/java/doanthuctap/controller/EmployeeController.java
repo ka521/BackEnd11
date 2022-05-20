@@ -26,27 +26,8 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping("/get-page/{index}")
-    public ResponseEntity<?> getPage(@PathVariable Integer index) {
-        try {
-            return ResponseEntity.ok(employeeService.getPage(index - 1));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
 
-        }
 
-    }
-
-    @GetMapping("/find-by-name")
-    public ResponseEntity<?> findByName(@RequestParam String name) {
-        try {
-            return ResponseEntity.ok(employeeService.findByName(name));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
-
-        }
-
-    }
 
     @GetMapping("/find-by-id/{id}")
     public ResponseEntity<?> findEmployee(@PathVariable Integer id) {
@@ -77,15 +58,7 @@ public class EmployeeController {
         }
     }
 
-    @PostMapping("/create-all")
-    public ResponseEntity<?> createAll(@RequestBody @Valid List<EmployeeDTO> list) {
-        try {
-            list.forEach(employeeDTO -> employeeService.newEmployee(employeeDTO));
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(MessageResponse.builder().message(e.getMessage()).build());
-        }
-    }
+
 
     @PutMapping("/update/{employee_id}")
     public ResponseEntity<?> updateEmployee(@PathVariable Integer employee_id, @RequestBody @Valid EmployeeDTO employeeDTO) {

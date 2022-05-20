@@ -1,17 +1,14 @@
 package doanthuctap.controller;
 
 import doanthuctap.entity.Working;
-import doanthuctap.entity.WorkingEntity;
-import doanthuctap.repository.WorkingRepository;
+
 import doanthuctap.repository.WorkingRepository1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import doanthuctap.common.MessageResponse;
-import doanthuctap.dto.WorkingDTO;
 import doanthuctap.service.WorkingService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,8 +20,7 @@ public class WorkingController {
 
 
 
-    @Autowired
-    private WorkingRepository workingRepository;
+
 
     @Autowired
     private WorkingRepository1 workingRepository1;

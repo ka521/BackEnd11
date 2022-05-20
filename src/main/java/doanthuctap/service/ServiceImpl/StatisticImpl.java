@@ -1,13 +1,13 @@
 package doanthuctap.service.ServiceImpl;
 
-import doanthuctap.repository.AdvanceRepository;
+import doanthuctap.entity.Advances;
+import doanthuctap.entity.Working;
+import doanthuctap.repository.AdvancesRepository1;
 import doanthuctap.repository.EmployeeRepository;
-import doanthuctap.repository.WorkingRepository;
+import doanthuctap.repository.WorkingRepository1;
 import doanthuctap.response.StatisticResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import doanthuctap.entity.AdvanceEntity;
-import doanthuctap.entity.WorkingEntity;
 import doanthuctap.service.StatisticService;
 
 import java.time.LocalDate;
@@ -18,9 +18,9 @@ import java.util.List;
 public class StatisticImpl implements StatisticService {
 
     @Autowired
-    private WorkingRepository workingRepository;
+    private WorkingRepository1 workingRepository;
     @Autowired
-    private AdvanceRepository advanceRepository;
+    private AdvancesRepository1 advanceRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -31,13 +31,13 @@ public class StatisticImpl implements StatisticService {
         LocalDate start = YearMonth.now().atDay(1);
         LocalDate end = YearMonth.now().atEndOfMonth();
 
-        List<WorkingEntity> workingList = workingRepository.findAllByEmployeeNoAndMonth(id, start, end);
-        List<AdvanceEntity> advanceList = advanceRepository.findAllByEmployeeNoAndMonth(id, start, end);
+        List<Working> workingList = workingRepository.findAllByEmployeeNoAndMonth(id, start, end);
+        List<Advances> advanceList = advanceRepository.findAllByEmployeeNoAndMonth(id, start, end);
 
 
         StatisticResponse statisticResponse = new StatisticResponse();
         double totalWorking = workingList.stream().mapToDouble(working -> (working.getHour() * moneyPerHour)).sum();
-        double totalAdvance = advanceList.stream().mapToDouble(AdvanceEntity::getMoney).sum();
+       double totalAdvance = advanceList.stream().mapToDouble(Advances::getMoney).sum();
 
         statisticResponse.setNumberOfWorkingDay(workingList.size());
         statisticResponse.setTotalGet(totalWorking);

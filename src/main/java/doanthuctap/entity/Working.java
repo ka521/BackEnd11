@@ -20,7 +20,7 @@ public class Working {
     private Date Start;
 
     @Column(name = "hour")
-    private String Hour;
+    private int Hour;
 
 
     @Column(name = "employeeId")
@@ -41,7 +41,7 @@ public class Working {
 
 
 
-    public Working(Date start, String hour) {
+    public Working(Date start, int hour) {
         Start = start;
         Hour = hour;
     }
@@ -54,11 +54,11 @@ public class Working {
         Start = start;
     }
 
-    public String getHour() {
+    public int getHour() {
         return Hour;
     }
 
-    public void setHour(String hour) {
+    public void setHour(int hour) {
         Hour = hour;
     }
 
