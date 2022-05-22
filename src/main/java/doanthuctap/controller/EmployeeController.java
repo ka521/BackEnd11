@@ -17,7 +17,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/get-all")
+    @GetMapping("/get-employee")
     public ResponseEntity<?> getAll() {
         try {
             return ResponseEntity.ok(employeeService.listEmployee());
@@ -29,7 +29,7 @@ public class EmployeeController {
 
 
 
-    @GetMapping("/find-by-id/{id}")
+    @GetMapping("/getbyid/{id}")
     public ResponseEntity<?> findEmployee(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(employeeService.findEmployee(id));
@@ -39,7 +39,7 @@ public class EmployeeController {
 
     }
 
-    @GetMapping("/find-by-team/{teamID}")
+    @GetMapping("/getbyteam/{teamID}")
     public ResponseEntity<?> listEmployeeByTeam(@PathVariable Integer teamID) {
         try {
             return ResponseEntity.ok(employeeService.listEmployeeByTeam(teamID));
@@ -81,7 +81,7 @@ public class EmployeeController {
 
     }
 
-    @DeleteMapping("/delete-multi")
+    @DeleteMapping("/deleteall")
     public ResponseEntity<?> deleteAll(@RequestParam(value = "ids") List<Integer> ids) {
         String s = employeeService.deleteAll(ids);
         return ResponseEntity.ok().body(s.isEmpty() ? "Delete Employees is successful!" : s);
