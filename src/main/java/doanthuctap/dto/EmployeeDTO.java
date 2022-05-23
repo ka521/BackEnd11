@@ -30,5 +30,5 @@ public class EmployeeDTO {
 
     private int teamID;
     private  String sex;
-
+    private String name;
 }

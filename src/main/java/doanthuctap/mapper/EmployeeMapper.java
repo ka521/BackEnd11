@@ -20,6 +20,7 @@ public class EmployeeMapper {
         dto.setPhone(entity.getPhone());
         dto.setStartDay(entity.getStartDay());
         dto.setTeamID(entity.getTeam().getNo());
+        dto.setName(entity.getTeam().getName());
         return dto;
     }
 
