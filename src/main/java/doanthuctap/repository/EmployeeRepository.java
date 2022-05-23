@@ -20,5 +20,5 @@ public interface EmployeeRepository extends CrudRepository<EmployeeEntity, Integ
 
 
     @Query(value = "select e.money_per_hour from Employee e where e.no=:id", nativeQuery = true)
-    double findMoneyPerHourByNo(@Param("id") Integer id);
+    double findMoney(@Param("id") Integer id);
 }

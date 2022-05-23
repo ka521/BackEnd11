@@ -26,7 +26,7 @@ public class StatisticImpl implements StatisticService {
 
     @Override
     public StatisticResponse getStatistic(Integer id) {
-        double moneyPerHour = employeeRepository.findMoneyPerHourByNo(id);
+        double moneyPerHour = employeeRepository.findMoney(id);
 
         LocalDate start = YearMonth.now().atDay(1);
         LocalDate end = YearMonth.now().atEndOfMonth();
