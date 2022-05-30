@@ -20,7 +20,7 @@ public class Team implements Serializable {
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "employeeTeam", fetch = FetchType.LAZY)
-//    @JsonIgnore
+
     private List<EmployeeModel> employee = new ArrayList<>();
-//    private Set<EmployeeModel> employees =new HashSet<>();
+
 }

@@ -39,18 +39,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    //    @Override
-//    public List<EmployeeDTO> getAllEmployees() {
-//
-//        return  employeeRepository.findAll();
-//    }
+
     @Override
     public List<EmployeeDTO> getAllEmployees() {
         List<EmployeeModel> employeeList = employeeRepository.findAll();
         System.out.println(employeeList);
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
         employeeList.stream().forEach(employee -> {
-//            EmployeeDTO employeeDTO=mapper.toEmployeeDTO(employee);
+
             employeeDTOList.add(mapper.toEmployeeDTOList(employee));
         });
         return employeeDTOList;
@@ -59,14 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeModel updateEmployee(EmployeeModel employee, int id) {
 
-        // we need to check whether employee with given id is exist in DB or not
 
-//        EmployeeModel employeeInDb=employeeRepository.getById(id);
-//        if(employeeInDb == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        employeeInDb.setFullName(EmployeeModel.getFullName());
-//        employeeInDb.setAge(EmployeeModel.getAge());
 
         EmployeeModel existingEmployee = employeeRepository.getById(id);
         existingEmployee.setFullName(employee.getFullName());
@@ -82,7 +71,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         existingEmployee.setEmployeeTeam(employee.getEmployeeTeam());
 
 
-        // save existing employee to DB
+
         employeeRepository.save(existingEmployee);
         return existingEmployee;
     }

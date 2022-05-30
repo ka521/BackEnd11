@@ -43,12 +43,7 @@ public class EmployeeModel implements Serializable {
     @JsonIgnore
     private Team employeeTeam;
 
-//    private Set<WorkingModel> workings =new HashSet<>();
 
-//    private Set<Advances> advances =new HashSet<>();
-//    private List<WorkingModel> workings = new ArrayList<>();
-
-// mapping onetomany
 
 
 }

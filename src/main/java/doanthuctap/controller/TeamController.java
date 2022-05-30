@@ -32,32 +32,15 @@ public class TeamController {
     @GetMapping(value = "/listTeam")
     public List<Team> getAllTeam() {
         return teamRepository.findAll();
-//        return employeeRepository.findAll();
+
     }
 
     @GetMapping(value = "/{id}")
     public TeamDTO getTeam(@PathVariable("id") int id) {
         return teamService.getTeamById(id);
-//        return employeeRepository.findAll();
+
     }
 
-//    @PostMapping(value="/insert")
-//    ResponseEntity<ResponseObject> addNewTeam(@ModelAttribute Team team) {
-////        Optional<WorkingModel> foundWorking = workingRepository.findById(working.getWorkingId());
-////        if (foundWorking.equals(true)) {
-////            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(
-////                    new ResponseObject("fail", "Working already taken", "")
-////            );
-////        }
-////        WorkingModel working = new WorkingModel();
-////        System.out.println(req);
-////        EmployeeModel employeeModel = employeeRepository.findById(working.getEmployeeModel().getEmployeeId()).get();
-////        working.setEmployeeModel(employeeModel);
-//        System.out.println(team);
-//        return ResponseEntity.status(HttpStatus.OK).body(
-//                new ResponseObject("OK", "Create New Team sucessfully", teamRepository.save(team))
-//        );
-//    }
 @PostMapping("/create")
 public ResponseEntity<?> addTeam(@RequestBody @Valid TeamDTO teamDTO) {
     try {

@@ -28,9 +28,7 @@ public class Mapper {
 
     public EmployeeDTO toEmployeeDTO(EmployeeModel entity) {
         EmployeeDTO dto = new EmployeeDTO();
-//        if (entity.getEmployeeId() != 0) {
-//            dto.setEmployeeId(entity.getEmployeeId());
-//        }
+
         dto.setNo(entity.getNo());
         dto.setFullName(entity.getFullName());
         dto.setAge(entity.getAge());
