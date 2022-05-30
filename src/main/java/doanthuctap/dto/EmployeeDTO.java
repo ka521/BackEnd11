@@ -1,34 +1,39 @@
 package doanthuctap.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+import doanthuctap.entity.Team;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.validation.constraints.*;
 import java.util.Date;
+import java.util.List;
 
-@Component
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 public class EmployeeDTO {
     private int no;
 
     private String fullName;
 
-    private int age;
-    private boolean isMale;
-    @Size(min = 0, max = 255)
+    private Integer age;
+
+    private String gender;
+
     private String address;
 
-    private double moneyPerHour;
+    private String phoneNumber;
 
-    private String phone;
-
-//    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date startDay;
 
-    private int teamID;
-    private  String sex;
-    private String name;
+    private Integer moneyPerHour;
+
+    private Integer totalHours;
+
+    private String imageURL;
+
+    private Team teamInfo;
+
+    private String teamName;
+
+    private int teamId;
+
 }

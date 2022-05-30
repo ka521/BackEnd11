@@ -1,20 +1,17 @@
 package doanthuctap.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
-@Component
-@Data
-@NoArgsConstructor
+import doanthuctap.entity.EmployeeModel;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
 public class TeamDTO {
-    private int no;
-    @NotEmpty(message = "Team's name is not empty")
-    @Size(min = 1, max = 255)
-    private String name;
-
-
+        private int teamId;
+        private String name;
+        private List<EmployeeModel> employee;
 }

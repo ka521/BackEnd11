@@ -37,7 +37,7 @@ public class StatisticImpl implements StatisticService {
 
         StatisticResponse statisticResponse = new StatisticResponse();
         double totalWorking = workingList.stream().mapToDouble(working -> (working.getHour() * moneyPerHour)).sum();
-       double totalAdvance = advanceList.stream().mapToDouble(Advances::getMoney).sum();
+        double totalAdvance = advanceList.stream().mapToDouble(Advances::getMoney).sum();
 
         statisticResponse.setNumberOfWorkingDay(workingList.size());
         statisticResponse.setTotalGet(totalWorking);
