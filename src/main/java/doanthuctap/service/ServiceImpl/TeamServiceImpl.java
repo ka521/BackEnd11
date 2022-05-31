@@ -6,13 +6,13 @@ import doanthuctap.dto.TeamDTO;
 import doanthuctap.entity.Team;
 import doanthuctap.mapper.Mapper;
 import doanthuctap.repository.TeamRepository;
-import doanthuctap.service.ITeamService;
+import doanthuctap.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class TeamService implements ITeamService {
+public class TeamServiceImpl implements TeamService {
     @Autowired
     private TeamRepository teamRepository;
     @Autowired
