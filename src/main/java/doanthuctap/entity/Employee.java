@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "employee")
-public class EmployeeModel implements Serializable {
+public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "no")

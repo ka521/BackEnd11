@@ -21,6 +21,6 @@ public class Team implements Serializable {
     private String name;
     @OneToMany(mappedBy = "employeeTeam", fetch = FetchType.LAZY)
 
-    private List<EmployeeModel> employee = new ArrayList<>();
+    private List<Employee> employee = new ArrayList<>();
 
 }

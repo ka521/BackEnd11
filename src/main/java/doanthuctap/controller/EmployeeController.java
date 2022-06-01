@@ -2,7 +2,7 @@ package doanthuctap.controller;
 
 import doanthuctap.common.MessageResponse;
 import doanthuctap.dto.EmployeeDTO;
-import doanthuctap.entity.EmployeeModel;
+import doanthuctap.entity.Employee;
 import doanthuctap.repository.EmployeeRepository;
 import doanthuctap.response.ResponseObject;
 import doanthuctap.service.IstorageService;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -31,12 +30,12 @@ public class EmployeeController {
 
     //CRUD api
     @PostMapping()
-    public ResponseEntity<EmployeeModel> saveEmployee(@RequestBody EmployeeModel employee) {
-        return new ResponseEntity<EmployeeModel>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
+    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
+        return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
 
     @PostMapping("/create")
-    ResponseEntity<ResponseObject> insertEmployee(@RequestParam("file") MultipartFile file, @ModelAttribute EmployeeModel employee) {
+    ResponseEntity<ResponseObject> insertEmployee(@RequestParam("file") MultipartFile file, @ModelAttribute Employee employee) {
 
         try {
 
@@ -64,10 +63,10 @@ public class EmployeeController {
 
 
     @PutMapping("/update/{id}")
-    ResponseEntity<ResponseObject> updateEmployee(@RequestParam(value = "file", required = false) MultipartFile file, @ModelAttribute EmployeeModel newEmployee, @PathVariable int id) {
+    ResponseEntity<ResponseObject> updateEmployee(@RequestParam(value = "file", required = false) MultipartFile file, @ModelAttribute Employee newEmployee, @PathVariable int id) {
         try {
 
-            EmployeeModel updateEmployee = employeeRepository.getById(id);
+            Employee updateEmployee = employeeRepository.getById(id);
             String imageUrl = updateEmployee.getImageURL();
             if (!file.isEmpty()) {
                 String generateFileName = storageService.storeFile(file);

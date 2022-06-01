@@ -1,23 +1,21 @@
 package doanthuctap.repository;
 
 
-import doanthuctap.entity.EmployeeModel;
-import doanthuctap.entity.Team;
+import doanthuctap.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Set;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<EmployeeModel, Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-    public List<EmployeeModel> findByFullName(String fullName);
+    public List<Employee> findByFullName(String fullName);
 
     @Query(value = "SELECT * from employee  where team_id=?1", nativeQuery = true)
-    List<EmployeeModel> findEmployeeInTeam(int id);
+    List<Employee> findEmployeeInTeam(int id);
 
 
 

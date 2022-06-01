@@ -2,17 +2,16 @@ package doanthuctap.service;
 
 
 import doanthuctap.dto.EmployeeDTO;
-import doanthuctap.entity.EmployeeModel;
+import doanthuctap.entity.Employee;
 
 import java.util.List;
-import java.util.Set;
 
 public interface EmployeeService {
-    EmployeeModel saveEmployee(EmployeeModel employee);
+    Employee saveEmployee(Employee employee);
 
     List<EmployeeDTO> getAllEmployees();
 
-    EmployeeModel updateEmployee(EmployeeModel employee, int id);
+    Employee updateEmployee(Employee employee, int id);
 
     void deleteEmployee(Integer id);
     EmployeeDTO findEmployee(Integer id);

@@ -2,7 +2,7 @@ package doanthuctap.dto;
 
 
 
-import doanthuctap.entity.EmployeeModel;
+import doanthuctap.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,5 +13,5 @@ import java.util.List;
 public class TeamDTO {
         private int teamId;
         private String name;
-        private List<EmployeeModel> employee;
+        private List<Employee> employee;
 }

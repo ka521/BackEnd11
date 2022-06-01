@@ -3,7 +3,7 @@ package doanthuctap.mapper;
 
 import doanthuctap.dto.EmployeeDTO;
 import doanthuctap.dto.TeamDTO;
-import doanthuctap.entity.EmployeeModel;
+import doanthuctap.entity.Employee;
 import doanthuctap.entity.Team;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Mapper {
 
-    public EmployeeModel toEmployeeEntity(EmployeeDTO dto) {
-        EmployeeModel entity = new EmployeeModel();
+    public Employee toEmployeeEntity(EmployeeDTO dto) {
+        Employee entity = new Employee();
         entity.setNo(dto.getNo());
         entity.setFullName(dto.getFullName());
         entity.setAge(dto.getAge());
@@ -26,7 +26,7 @@ public class Mapper {
         return entity;
     }
 
-    public EmployeeDTO toEmployeeDTO(EmployeeModel entity) {
+    public EmployeeDTO toEmployeeDTO(Employee entity) {
         EmployeeDTO dto = new EmployeeDTO();
 
         dto.setNo(entity.getNo());
@@ -46,7 +46,7 @@ public class Mapper {
         return dto;
     }
 
-    public EmployeeDTO toEmployeeDTOList(EmployeeModel entity) {
+    public EmployeeDTO toEmployeeDTOList(Employee entity) {
         EmployeeDTO dto = new EmployeeDTO();
 //        if (entity.getEmployeeId() != 0) {
 //            dto.setEmployeeId(entity.getEmployeeId());
