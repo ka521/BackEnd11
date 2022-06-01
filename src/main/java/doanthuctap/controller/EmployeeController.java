@@ -28,11 +28,7 @@ public class EmployeeController {
     @Autowired
     private IstorageService storageService;
 
-    //CRUD api
-    @PostMapping()
-    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
-        return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
-    }
+
 
     @PostMapping("/create")
     ResponseEntity<ResponseObject> insertEmployee(@RequestParam("file") MultipartFile file, @ModelAttribute Employee employee) {
@@ -125,32 +121,19 @@ public class EmployeeController {
 
     }
 
-    @GetMapping(value = "/listEmployee")
-    public ResponseEntity<ResponseObject> getAllEmployeeNoPagination() {
-        System.out.println("hello");
-        List<EmployeeDTO> ListEmployee = employeeService.getAllEmployees();
-        if (ListEmployee.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                    new ResponseObject("ok", "No Employee In List", ""));
-        } else {
-            return ResponseEntity.status(HttpStatus.OK).body(
-                    new ResponseObject("ok", "Cannot find employee with id = ", ListEmployee)
-            );
-        }
-
-    }
 
 
-    @GetMapping(value = "{id}")
-    public ResponseEntity<EmployeeDTO> findEmployeeById(@PathVariable("id") int employeeId) {
 
-        try {
-            System.out.println(employeeId);
-            return new ResponseEntity<EmployeeDTO>(employeeService.getEmployeeById(employeeId), HttpStatus.OK);
-        } catch (Exception exception) {
-            return null;
-        }
-    }
+//    @GetMapping(value = "{id}")
+//    public ResponseEntity<EmployeeDTO> findEmployeeById(@PathVariable("id") int employeeId) {
+//
+//        try {
+//            System.out.println(employeeId);
+//            return new ResponseEntity<EmployeeDTO>(employeeService.getEmployeeById(employeeId), HttpStatus.OK);
+//        } catch (Exception exception) {
+//            return null;
+//        }
+//    }
 
     @GetMapping("/getbyid/{id}")
     public ResponseEntity<?> findEmployee(@PathVariable Integer id) {
